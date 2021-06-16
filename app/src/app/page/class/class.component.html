@@ -1,0 +1,28 @@
+<div class="container">
+    <div fxLayout="column" fxLayoutAlign=" none">
+        <div fxLayout="column" fxLayoutAlign="center center">
+            <h1 class="title">{{title}}'s effort ranking</h1>
+        </div>
+
+        <div>
+            <ul class="list-group">
+                <li class="list-group-item" *ngFor="let student of students">
+                    <div fxLayout="row" fxLayoutAlign="space-between none" >
+                        <div>
+                            Tony
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="end none">
+                            <div>
+                                <img src="../../../assets/icon/down-arrow.svg" class="badge_icon">
+                                <!-- <img src="../../../assets/icon/up-arrow.svg" class="badge_icon"> -->
+                                <span class="badge badge-primary badge-pill">15 point</span>
+                                <span class="badge badge-success badge-pill">+150%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
