@@ -1,0 +1,23 @@
+div {
+    font-size: 25px;
+}
+
+.badge_icon {
+    width: 30px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.badge {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.title {
+    margin-top: 10px;
+    color: white;
+}
+
+.container {
+    margin-top: 10px;
+}

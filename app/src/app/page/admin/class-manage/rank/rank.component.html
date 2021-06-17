@@ -1,0 +1,151 @@
+<div fxLayout="column" fxLayoutAlign=" none">
+  <!-- <button (click)="createData()">createData</button> -->
+  <div fxLayout="row" fxLayoutAlign="space-between none">
+    <div fxFlex="20"></div>
+    <div fxFlex="60">
+      <h1 class="title">{{ title }}'s Effort Ranking</h1>
+    </div>
+    <div fxFlex="20">
+      <a href="javascript:void(0);"
+        ><img
+          src="../../../../../assets//icon/random.png"
+          style="width: 40px"
+          type="button"
+          data-toggle="modal"
+          data-target="#modelId"
+          (click)="randomStudent()"
+      /></a>
+      <a href="javascript:void(0);"
+        ><img src="../../../../../assets//icon/lucky.png" style="width: 40px; margin-left: 50px" (click)="luck == 0 ? (luck = 1) : (luck = 0)"
+      /></a>
+    </div>
+  </div>
+  <div>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let student of students; let i = index">
+        <div fxLayout="row" fxLayoutAlign="space-between none">
+          <div>
+            <div dir="ltr" fxLayoutGap="20px">
+              <class
+                class="badge badge-pill"
+                [ngClass]="i == 0 ? 'badge-danger' : i == 1 ? 'badge-warning' : i == 2 ? 'badge-primary' : 'badge-success'"
+                >{{ getIndex(i) }}</class
+              >
+              <a
+                href="javascript:void(0);"
+                (click)="showStudent(student)"
+                style="padding-top: 5px"
+                data-toggle="modal"
+                data-target="#modelIdStudent"
+                >{{ student.englishName }}</a
+              >
+            </div>
+          </div>
+          <div></div>
+          <div fxLayout="row" fxLayoutAlign="end none">
+            <div>
+              <img *ngIf="student.winStreak == 1" src="../../../assets/icon/down-arrow.svg" class="badge_icon" />
+              <img *ngIf="student.winStreak == 2" src="../../../assets/icon/up-arrow.svg" class="badge_icon" />
+              <span class="badge badge-primary badge-pill">{{ student.point }} point</span>
+              <span *ngIf="student.luckCondition == 0 && luck" class="badge badge-danger badge-pill">{{ student.luck }}%</span>
+              <span *ngIf="student.luckCondition == 1 && luck" class="badge badge-success badge-pill">+{{ student.luck }}%</span>
+              <span *ngIf="student.luckCondition == 2 && luck" class="badge badge-primary badge-pill">{{ student.luck }}%</span>
+              <a href="javascript:void(0);"><span (click)="plusOne(student)" class="badge badge-success badge-pill"> + </span></a>
+              <a href="javascript:void(0);"><span (click)="minusOne(student)" class="badge badge-danger badge-pill"> - </span></a>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- Modal Random-->
+<div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Who will be the luckiest?</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="getStudents(classObject.id)">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div fxLayout="row" fxLayoutAlign="center none">
+          <h1>
+            {{ rmStudentName }}
+          </h1>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-around center">
+        <button (click)="plusPoint(2)" type="button" class="btn btn-success btn_random">True +2</button>
+        <button (click)="plusPoint(1)" type="button" class="btn btn-danger btn_random">False +1</button>
+        <button (click)="plusPoint(0)" type="button" class="btn btn-warning btn_random">Next +0</button>
+      </div>
+      <br />
+    </div>
+  </div>
+</div>
+
+<!-- Modal Student-->
+<div class="modal fade" id="modelIdStudent" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title">Student details: {{ studentSelected.englishName == null ? studentSelected.englishName : '' }}</h1>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="input-group mb-3">
+          <span class="input-group-text">Full Name: </span>
+          <input type="text" class="form-control" #fullName (ngModel)="(fullName)" [value]="studentSelected.fullName" />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">English Name: </span>
+          <input type="text" class="form-control" #englishName (ngModel)="(englishName)" [value]="studentSelected.englishName" />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Date of birth: </span>
+          <input type="date" class="form-control" #dob (ngModel)="(dob)" [value]="studentSelected.dob" />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Phone Number: </span>
+          <input type="text" class="form-control" #phoneNumber (ngModel)="(phoneNumber)" [value]="studentSelected.phoneNumber" />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Email: </span>
+          <input type="text" class="form-control" #email (ngModel)="(email)" [value]="studentSelected.email" />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Prinberk Accounts: </span>
+          <input type="text" class="form-control" #prinberkAccounts (ngModel)="(prinberkAccounts)" [value]="studentSelected.prinberkAccounts" />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Student Email (Google class & Hangouts): </span>
+          <input type="text" class="form-control" #studentEmailGCH (ngModel)="(studentEmailGCH)" [value]="studentSelected.studentEmailGCH" />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Class: </span>
+          <!-- <input type="text" class="form-control" #classId (ngModel)="(classId)" [value]="studentSelected.classId" /> -->
+          <select class="form-control" #classId (ngModel)="(classId)">
+            <option *ngFor="let class of classes" value="{{ class.id }}" [selected]="class.id == studentSelected.classId">{{ class.name }}</option>
+          </select>
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Point: </span>
+          <input type="number" class="form-control" #point (ngModel)="(point)" [value]="studentSelected.point" />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Note: </span>
+          <textarea class="form-control" #notes (ngModel)="(point)" [value]="studentSelected.notes"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="updateStudent()" data-dismiss="modal">Save</button>
+      </div>
+    </div>
+  </div>
+</div>

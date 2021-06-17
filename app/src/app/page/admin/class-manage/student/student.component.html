@@ -1,0 +1,214 @@
+<div fxLayout="column" fxLayoutAlign=" none">
+  <div fxLayout="row" fxLayoutAlign="space-between none">
+    <div fxFlex="20"></div>
+    <div fxFlex="60">
+      <h1 class="title">{{ title }}'s information</h1>
+    </div>
+    <div fxFlex="20">
+      <a href="javascript:void(0);"
+        ><img
+          src="../../../../../assets//icon/add.png"
+          style="width: 40px"
+          type="button"
+          data-toggle="modal"
+          data-target="#modelNewStudent"
+          (click)="resetStudent()"
+      /></a>
+    </div>
+  </div>
+  <div>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <div fxLayout="row" fxLayoutAlign="space-between none">
+          <div class="input-group mb-3">
+            <span class="input-group-text">Search</span>
+            <input
+              type="text"
+              class="form-control"
+              #keySearch
+              (ngModel)="(keySearch)"
+              (keyup)="onKeySearch($event)"
+              placeholder="Type the keyword you want to search!"
+            />
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item" *ngFor="let student of students; let i = index">
+        <div fxLayout="row" fxLayoutAlign="space-between none">
+          <div>
+            <div dir="ltr" fxLayoutGap="20px">
+              <span class="badge badge-pill badge-success">{{ getIndex(i) }}</span>
+              <a
+                href="javascript:void(0);"
+                (click)="showStudent(student)"
+                style="padding-top: 5px"
+                data-toggle="modal"
+                data-target="#modelEditStudent"
+                >{{ student.englishName }}</a
+              >
+            </div>
+          </div>
+          <div></div>
+          <div fxLayout="row" fxLayoutAlign="end none">
+            <div>
+              <a href="javascript:void(0);"
+                ><img
+                  src="../../../assets/icon/edit.png"
+                  (click)="showStudent(student)"
+                  style="padding-top: 5px"
+                  data-toggle="modal"
+                  data-target="#modelEditStudent"
+                  class="badge_icon"
+              /></a>
+              <a href="javascript:void(0);"
+                ><img src="../../../assets/icon/delete.png" (click)="handleDelete(student)" style="padding-top: 5px" class="badge_icon"
+              /></a>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- Modal Edit Student-->
+<div class="modal fade" id="modelEditStudent" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title">Student details: {{ studentSelected.englishName == null ? studentSelected.englishName : '' }}</h1>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="input-group mb-3">
+          <span class="input-group-text">Full Name: </span>
+          <input type="text" class="form-control" #fullName (ngModel)="(fullName)" [value]="studentSelected.fullName" />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">English Name: </span>
+          <input type="text" class="form-control" #englishName (ngModel)="(englishName)" [value]="studentSelected.englishName" />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Date of birth: </span>
+          <input type="date" class="form-control" #dob (ngModel)="(dob)" [value]="studentSelected.dob" />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Phone Number: </span>
+          <input type="text" class="form-control" #phoneNumber (ngModel)="(phoneNumber)" [value]="studentSelected.phoneNumber" />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Email: </span>
+          <input type="text" class="form-control" #email (ngModel)="(email)" [value]="studentSelected.email" />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Prinberk Accounts: </span>
+          <input type="text" class="form-control" #prinberkAccounts (ngModel)="(prinberkAccounts)" [value]="studentSelected.prinberkAccounts" />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Student Email (Google class & Hangouts): </span>
+          <input type="text" class="form-control" #studentEmailGCH (ngModel)="(studentEmailGCH)" [value]="studentSelected.studentEmailGCH" />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Class: </span>
+          <select class="form-control" #classId (ngModel)="(classId)">
+            <option *ngFor="let class of classes" value="{{ class.id }}" [selected]="class.id == studentSelected.classId">{{ class.name }}</option>
+          </select>
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Point: </span>
+          <input type="number" class="form-control" #point (ngModel)="(point)" [value]="studentSelected.point" />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Note: </span>
+          <textarea class="form-control" #notes (ngModel)="(point)" [value]="studentSelected.notes"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="updateStudent()" data-dismiss="modal">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal New Student-->
+<div class="modal fade" id="modelNewStudent" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title">Add a new student</h1>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="input-group mb-3">
+          <span class="input-group-text">Full Name: </span>
+          <input type="text" class="form-control" #fullNameNew (ngModel)="(fullNameNew)" placeholder="Example: Nguyễn Văn A" />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">English Name: </span>
+          <input type="text" class="form-control" #englishNameNew (ngModel)="(englishNameNew)" placeholder="Example: TONY" />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Date of birth: </span>
+          <input type="date" class="form-control" #dobNew (ngModel)="(dobNew)" />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Phone Number: </span>
+          <input
+            type="text"
+            class="form-control"
+            #phoneNumberNew
+            (ngModel)="(phoneNumberNew)"
+            placeholder="Example: 098 765 432 - 0122 234 567 - ......"
+          />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Email: </span>
+          <input type="text" class="form-control" #emailNew (ngModel)="(emailNew)" placeholder="Example: tony@gmail.com - tony2@gmail.com - ....." />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Prinberk Accounts: </span>
+          <input
+            type="text"
+            class="form-control"
+            #prinberkAccountsNew
+            (ngModel)="(prinberkAccountsNew)"
+            placeholder="Example: tony/tony123 - tony2@gmail.com/tony123 - ....."
+          />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Student Email (Google class & Hangouts): </span>
+          <input
+            type="text"
+            class="form-control"
+            #studentEmailGCHNew
+            (ngModel)="(studentEmailGCHNew)"
+            placeholder="Example: tony/tony123 - tony2@gmail.com/tony123 - ....."
+          />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Class: </span>
+          <select class="form-control" #classIdNew (ngModel)="(classIdNew)">
+            <option *ngFor="let class of classes" value="{{ class.id }}">{{ class.name }}</option>
+          </select>
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Point: </span>
+          <input type="number" class="form-control" #pointNew (ngModel)="(pointNew)" />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Note: </span>
+          <textarea class="form-control" #notesNew (ngModel)="(point)" [value]="studentSelected.notesNew"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="newStudent()" data-dismiss="modal">Save</button>
+      </div>
+    </div>
+  </div>
+</div>

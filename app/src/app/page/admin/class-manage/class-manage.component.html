@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="card text-center">
+    <div class="card-header">
+      <ul class="nav nav-tabs card-header-tabs">
+        <li class="nav-item" (click)="cardStatus = 0">
+          <button class="nav-link" [ngClass]="cardStatus == 0 ? 'active' : ''" (click)="setTab(0)">Effort Rank</button>
+        </li>
+        <li class="nav-item" (click)="cardStatus = 1">
+          <button class="nav-link" [ngClass]="cardStatus == 1 ? 'active' : ''" (click)="setTab(1)">Students</button>
+        </li>
+        <li class="nav-item" (click)="cardStatus = 2">
+          <button class="nav-link" [ngClass]="cardStatus == 2 ? 'active' : ''" (click)="setTab(2)">Comments</button>
+        </li>
+      </ul>
+    </div>
+    <div *ngIf="cardStatus == 0" class="card-body">
+      <app-rank></app-rank>
+    </div>
+    <div *ngIf="cardStatus == 1" class="card-body">
+      <app-student></app-student>
+    </div>
+    <div *ngIf="cardStatus == 2" class="card-body">
+      <app-comment></app-comment>
+    </div>
+  </div>
+</div>

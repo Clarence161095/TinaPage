@@ -6,7 +6,7 @@ GET {{baseUrl}}/classes
 
 ###
 # @name getStudents
-GET {{baseUrl}}/students?classId=1
+GET {{baseUrl}}/students?q=ANn&classId=1
 
 
 ###
@@ -21,11 +21,12 @@ Content-Type: application/json
 }
 
 ###
-# @name createClass
-POST {{baseUrl}}/students
+PATCH  {{baseUrl}}/students/1
 Content-Type: application/json
 
 {
-    "classId": 1,
-    "name": "Tony"
+   "point": 0,
+    "winStreak": 0,
+    "streakNumber": 0
+    
 }
