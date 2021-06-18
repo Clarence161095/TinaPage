@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng s --host 0.0.0.0 -o --live-reload false",
+    "start": "ng s",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"

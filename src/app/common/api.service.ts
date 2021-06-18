@@ -5,7 +5,8 @@ import {Injectable} from '@angular/core';
   providedIn: 'root',
 })
 export class ApiService {
-  API = 'http://localhost:4300';
+  API = 'https://json-server-tuan200.herokuapp.com/api';
+  // API = 'http://localhost:4300';
   // Http Headers
   httpOptions = {
     headers: new HttpHeaders({
