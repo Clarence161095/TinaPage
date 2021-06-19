@@ -5,8 +5,9 @@ import { Injectable } from "@angular/core";
   providedIn: "root",
 })
 export class ApiService {
-  API = 'http://45.32.39.52:4001';
+  API = "https://45.32.39.52:4001";
   // API = "http://localhost:4001";
+
   // Http Headers
   httpOptions = {
     headers: new HttpHeaders({
@@ -31,9 +32,7 @@ export class ApiService {
 
   // Student
   getStudents(classID: any) {
-    return this.httpClient.get(
-      this.API + "/students?_sort=point&_order=desc&classId=" + classID
-    );
+    return this.httpClient.get(this.API + "/students?_sort=point&_order=desc&classId=" + classID);
   }
 
   getStudentByID(id: any) {
@@ -138,28 +137,24 @@ export class ApiService {
   }
 
   searchStudents(keySearch: any, classId: any) {
-    return this.httpClient.get(
-      this.API + "/students?q=" + keySearch + "&classId=" + classId
-    );
+    return this.httpClient.get(this.API + "/students?q=" + keySearch + "&classId=" + classId);
   }
 
   deleteStudent(student: any) {
-    this.httpClient
-      .delete(this.API + "/students/" + Number(student.id))
-      .subscribe(
-        (res: any) => {
-          if (res.status == 200) {
-            console.log("DONE Delete student: " + student.id);
-          }
-        },
-        (error) => {
-          if (error.status == 500) {
-            console.log("ERROR 500 Delete student: " + student.id);
-          } else if (error.status == 404) {
-            console.log("ERROR 500 Delete student: " + student.id);
-          }
+    this.httpClient.delete(this.API + "/students/" + Number(student.id)).subscribe(
+      (res: any) => {
+        if (res.status == 200) {
+          console.log("DONE Delete student: " + student.id);
         }
-      );
+      },
+      (error) => {
+        if (error.status == 500) {
+          console.log("ERROR 500 Delete student: " + student.id);
+        } else if (error.status == 404) {
+          console.log("ERROR 500 Delete student: " + student.id);
+        }
+      }
+    );
   }
 
   // Test
