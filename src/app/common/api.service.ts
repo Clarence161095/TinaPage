@@ -5,7 +5,7 @@ import { Injectable } from "@angular/core";
   providedIn: "root",
 })
 export class ApiService {
-  API = "https://45.32.39.52:4001";
+  API = "http://45.32.39.52:4001";
   // API = "http://localhost:4001";
 
   // Http Headers
@@ -23,7 +23,7 @@ export class ApiService {
 
   // Class
   getClasses() {
-    return this.httpClient.get(this.API + "/classes", this.httpOptions);
+    return this.httpClient.get(this.API + "/classes");
   }
 
   getClassById(classID: any) {
