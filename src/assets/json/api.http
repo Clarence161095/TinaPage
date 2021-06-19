@@ -1,8 +1,9 @@
-@baseUrl = http://localhost:4300
+# @baseUrl = http://localhost:4300
+@baseUrl = https://45.32.39.52:4001
 
 ###
 # @name getClasss
-GET {{baseUrl}}/classes
+GET {{baseUrl}}/students
 
 ###
 # @name getStudents
@@ -11,14 +12,23 @@ GET {{baseUrl}}/students?q=ANn&classId=1
 
 ###
 # @name createClass
-POST {{baseUrl}}/classes
+POST {{baseUrl}}/students
 Content-Type: application/json
 
 {
-    "name": "Class C1",
-    "year": "2021",
-    "numbers": "32"
-}
+      "fullName": "C 444",
+      "englishName": "C 123",
+      "dob": "2011-01-01",
+      "phoneNumber": "",
+      "email": "",
+      "prinberkAccounts": "",
+      "studentEmailGCH": "",
+      "classId": 999,
+      "point": 0,
+      "winStreak": 0,
+      "streakNumber": 0,
+      "notes": ""
+    }
 
 ###
 PATCH  {{baseUrl}}/students/1

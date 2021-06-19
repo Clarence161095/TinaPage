@@ -23,7 +23,7 @@ export class ApiService {
 
   // Class
   getClasses() {
-    return this.httpClient.get(this.API + "/classes");
+    return this.httpClient.get(this.API + "/classes", this.httpOptions);
   }
 
   getClassById(classID: any) {
