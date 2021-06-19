@@ -61,7 +61,11 @@
                   class="badge_icon"
               /></a>
               <a href="javascript:void(0);"
-                ><img src="../../../assets/icon/delete.png" (click)="handleDelete(student)" style="padding-top: 5px" class="badge_icon"
+                ><img
+                  src="../../../assets/icon/delete.png"
+                  (click)="handleDelete(student)"
+                  style="padding-top: 5px"
+                  class="badge_icon"
               /></a>
             </div>
           </div>
@@ -72,11 +76,21 @@
 </div>
 
 <!-- Modal Edit Student-->
-<div class="modal fade" id="modelEditStudent" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div
+  class="modal fade"
+  id="modelEditStudent"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="modelTitleId"
+  aria-hidden="true"
+>
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title">Student details: {{ studentSelected.englishName == null ? studentSelected.englishName : '' }}</h1>
+        <h1 class="modal-title">
+          Student details:
+          {{ studentSelected.englishName == null ? studentSelected.englishName : "" }}
+        </h1>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -88,7 +102,13 @@
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text">English Name: </span>
-          <input type="text" class="form-control" #englishName (ngModel)="(englishName)" [value]="studentSelected.englishName" />
+          <input
+            type="text"
+            class="form-control"
+            #englishName
+            (ngModel)="(englishName)"
+            [value]="studentSelected.englishName"
+          />
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text">Date of birth: </span>
@@ -96,7 +116,13 @@
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text">Phone Number: </span>
-          <input type="text" class="form-control" #phoneNumber (ngModel)="(phoneNumber)" [value]="studentSelected.phoneNumber" />
+          <input
+            type="text"
+            class="form-control"
+            #phoneNumber
+            (ngModel)="(phoneNumber)"
+            [value]="studentSelected.phoneNumber"
+          />
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text">Email: </span>
@@ -104,16 +130,34 @@
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text">Prinberk Accounts: </span>
-          <input type="text" class="form-control" #prinberkAccounts (ngModel)="(prinberkAccounts)" [value]="studentSelected.prinberkAccounts" />
+          <input
+            type="text"
+            class="form-control"
+            #prinberkAccounts
+            (ngModel)="(prinberkAccounts)"
+            [value]="studentSelected.prinberkAccounts"
+          />
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text">Student Email (Google class & Hangouts): </span>
-          <input type="text" class="form-control" #studentEmailGCH (ngModel)="(studentEmailGCH)" [value]="studentSelected.studentEmailGCH" />
+          <input
+            type="text"
+            class="form-control"
+            #studentEmailGCH
+            (ngModel)="(studentEmailGCH)"
+            [value]="studentSelected.studentEmailGCH"
+          />
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text">Class: </span>
           <select class="form-control" #classId (ngModel)="(classId)">
-            <option *ngFor="let class of classes" value="{{ class.id }}" [selected]="class.id == studentSelected.classId">{{ class.name }}</option>
+            <option
+              *ngFor="let class of classes"
+              value="{{ class.id }}"
+              [selected]="class.id == studentSelected.classId"
+            >
+              {{ class.name }}
+            </option>
           </select>
         </div>
         <div class="input-group mb-3">
@@ -134,7 +178,14 @@
 </div>
 
 <!-- Modal New Student-->
-<div class="modal fade" id="modelNewStudent" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div
+  class="modal fade"
+  id="modelNewStudent"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="modelTitleId"
+  aria-hidden="true"
+>
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -146,11 +197,23 @@
       <div class="modal-body">
         <div class="input-group mb-3">
           <span class="input-group-text">Full Name: </span>
-          <input type="text" class="form-control" #fullNameNew (ngModel)="(fullNameNew)" placeholder="Example: Nguyễn Văn A" />
+          <input
+            type="text"
+            class="form-control"
+            #fullNameNew
+            (ngModel)="(fullNameNew)"
+            placeholder="Example: Nguyễn Văn A"
+          />
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text">English Name: </span>
-          <input type="text" class="form-control" #englishNameNew (ngModel)="(englishNameNew)" placeholder="Example: TONY" />
+          <input
+            type="text"
+            class="form-control"
+            #englishNameNew
+            (ngModel)="(englishNameNew)"
+            placeholder="Example: TONY"
+          />
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text">Date of birth: </span>
@@ -168,7 +231,13 @@
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text">Email: </span>
-          <input type="text" class="form-control" #emailNew (ngModel)="(emailNew)" placeholder="Example: tony@gmail.com - tony2@gmail.com - ....." />
+          <input
+            type="text"
+            class="form-control"
+            #emailNew
+            (ngModel)="(emailNew)"
+            placeholder="Example: tony@gmail.com - tony2@gmail.com - ....."
+          />
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text">Prinberk Accounts: </span>
@@ -193,7 +262,13 @@
         <div class="input-group mb-3">
           <span class="input-group-text">Class: </span>
           <select class="form-control" #classIdNew (ngModel)="(classIdNew)">
-            <option *ngFor="let class of classes" value="{{ class.id }}">{{ class.name }}</option>
+            <option
+              *ngFor="let class of classes"
+              value="{{ class.id }}"
+              [selected]="class.id == studentSelected.classId"
+            >
+              {{ class.name }}
+            </option>
           </select>
         </div>
         <div class="input-group mb-3">

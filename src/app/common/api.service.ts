@@ -1,47 +1,49 @@
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import {Injectable} from '@angular/core';
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
+import { Injectable } from "@angular/core";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class ApiService {
-  API = 'https://json-server-tuan200.herokuapp.com/api';
-  // API = 'http://localhost:4300';
+  API = 'http://45.32.39.52:4001';
+  // API = "http://localhost:4001";
   // Http Headers
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     }),
   };
 
   constructor(private httpClient: HttpClient) {
     this.httpOptions = {
-      headers: new HttpHeaders({'Content-Type': 'application/json'}),
+      headers: new HttpHeaders({ "Content-Type": "application/json" }),
     };
   }
 
   // Class
   getClasses() {
-    return this.httpClient.get(this.API + '/classes');
+    return this.httpClient.get(this.API + "/classes");
   }
 
   getClassById(classID: any) {
-    return this.httpClient.get(this.API + '/classes/' + classID);
+    return this.httpClient.get(this.API + "/classes/" + classID);
   }
 
   // Student
   getStudents(classID: any) {
-    return this.httpClient.get(this.API + '/students?_sort=point&_order=desc&classId=' + classID);
+    return this.httpClient.get(
+      this.API + "/students?_sort=point&_order=desc&classId=" + classID
+    );
   }
 
   getStudentByID(id: any) {
-    return this.httpClient.get(this.API + '/students/' + id);
+    return this.httpClient.get(this.API + "/students/" + id);
   }
 
   updateStudentPoint(student: any) {
     this.httpClient
       .patch(
-        this.API + '/students/' + student.id,
+        this.API + "/students/" + student.id,
         JSON.stringify({
           point: student.point,
           winStreak: student.winStreak,
@@ -52,14 +54,14 @@ export class ApiService {
       .subscribe(
         (res: any) => {
           if (res.status == 200) {
-            console.log('DONE Patch effort of student: ' + student.id);
+            console.log("DONE Patch effort of student: " + student.id);
           }
         },
         (error) => {
           if (error.status == 500) {
-            console.log('ERROR 500 Patch effort of student: ' + student.id);
+            console.log("ERROR 500 Patch effort of student: " + student.id);
           } else if (error.status == 404) {
-            console.log('ERROR 500 Patch effort of student: ' + student.id);
+            console.log("ERROR 500 Patch effort of student: " + student.id);
           }
         }
       );
@@ -68,7 +70,7 @@ export class ApiService {
   updateStudentFull(student: any) {
     this.httpClient
       .patch(
-        this.API + '/students/' + Number(student.id),
+        this.API + "/students/" + Number(student.id),
         JSON.stringify({
           fullName: student.fullName,
           englishName: student.englishName,
@@ -86,14 +88,14 @@ export class ApiService {
       .subscribe(
         (res: any) => {
           if (res.status == 200) {
-            console.log('DONE Update full info of student: ' + student.id);
+            console.log("DONE Update full info of student: " + student.id);
           }
         },
         (error) => {
           if (error.status == 500) {
-            console.log('ERROR 500 Patch effort of student: ' + student.id);
+            console.log("ERROR 500 Patch effort of student: " + student.id);
           } else if (error.status == 404) {
-            console.log('ERROR 500 Patch effort of student: ' + student.id);
+            console.log("ERROR 500 Patch effort of student: " + student.id);
           }
         }
       );
@@ -102,7 +104,7 @@ export class ApiService {
   addStudentFull(student: any) {
     this.httpClient
       .post(
-        this.API + '/students',
+        this.API + "/students",
         JSON.stringify({
           fullName: student.fullName,
           englishName: student.englishName,
@@ -122,38 +124,42 @@ export class ApiService {
       .subscribe(
         (res: any) => {
           if (res.status == 200) {
-            console.log('DONE Add student: ' + student.id);
+            console.log("DONE Add student: " + student.id);
           }
         },
         (error) => {
           if (error.status == 500) {
-            console.log('ERROR 500 Add student: ' + student.id);
+            console.log("ERROR 500 Add student: " + student.id);
           } else if (error.status == 404) {
-            console.log('ERROR 500 Add student: ' + student.id);
+            console.log("ERROR 500 Add student: " + student.id);
           }
         }
       );
   }
 
   searchStudents(keySearch: any, classId: any) {
-    return this.httpClient.get(this.API + '/students?q=' + keySearch + '&classId=' + classId);
+    return this.httpClient.get(
+      this.API + "/students?q=" + keySearch + "&classId=" + classId
+    );
   }
 
   deleteStudent(student: any) {
-    this.httpClient.delete(this.API + '/students/' + Number(student.id)).subscribe(
-      (res: any) => {
-        if (res.status == 200) {
-          console.log('DONE Delete student: ' + student.id);
+    this.httpClient
+      .delete(this.API + "/students/" + Number(student.id))
+      .subscribe(
+        (res: any) => {
+          if (res.status == 200) {
+            console.log("DONE Delete student: " + student.id);
+          }
+        },
+        (error) => {
+          if (error.status == 500) {
+            console.log("ERROR 500 Delete student: " + student.id);
+          } else if (error.status == 404) {
+            console.log("ERROR 500 Delete student: " + student.id);
+          }
         }
-      },
-      (error) => {
-        if (error.status == 500) {
-          console.log('ERROR 500 Delete student: ' + student.id);
-        } else if (error.status == 404) {
-          console.log('ERROR 500 Delete student: ' + student.id);
-        }
-      }
-    );
+      );
   }
 
   // Test

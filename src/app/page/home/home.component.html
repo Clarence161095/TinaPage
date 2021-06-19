@@ -1,15 +1,14 @@
 <div class="container">
-    <div class="form-group inputSecretKey">
-      <label>Please enter the secret key here </label>
-      <input type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
-      <small id="helpId" class="form-text text-muted">Help text</small>
+  <div class="form-group inputSecretKey">
+    <label>Please enter the student's secret key here!</label>
+    <input type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="" />
+    <small id="helpId" class="form-text text-muted">Input your secret key and press enter.</small>
+  </div>
+  <div class="card" *ngFor="let number of [1, 2, 3, 4, 5]">
+    <h5 class="card-header">News of Class {{ number }}</h5>
+    <div class="card-body">
+      <h5 class="card-title">Special title treatment</h5>
+      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
     </div>
-    <div class="card" *ngFor="let number of [0,1,2,3,4]">
-        <h5 class="card-header">Featured</h5>
-        <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-        </div>
-    </div>
+  </div>
 </div>

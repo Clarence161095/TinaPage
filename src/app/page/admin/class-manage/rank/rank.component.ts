@@ -1,71 +1,75 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
-import {ApiService} from 'src/app/common/api.service';
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { Router, ActivatedRoute } from "@angular/router";
+import { ApiService } from "src/app/common/api.service";
 
 @Component({
-  selector: 'app-rank',
-  templateUrl: './rank.component.html',
-  styleUrls: ['./rank.component.css'],
+  selector: "app-rank",
+  templateUrl: "./rank.component.html",
+  styleUrls: ["./rank.component.css"],
 })
 export class RankComponent implements OnInit {
-  @ViewChild('fullName', {static: false}) fullName: any;
-  @ViewChild('englishName', {static: false}) englishName: any;
-  @ViewChild('dob', {static: false}) dob: any;
-  @ViewChild('phoneNumber', {static: false}) phoneNumber: any;
-  @ViewChild('email', {static: false}) email: any;
-  @ViewChild('prinberkAccounts', {static: false}) prinberkAccounts: any;
-  @ViewChild('studentEmailGCH', {static: false}) studentEmailGCH: any;
-  @ViewChild('classId', {static: false}) classId: any;
-  @ViewChild('point', {static: false}) point: any;
-  @ViewChild('notes', {static: false}) notes: any;
+  @ViewChild("fullName", { static: false }) fullName: any;
+  @ViewChild("englishName", { static: false }) englishName: any;
+  @ViewChild("dob", { static: false }) dob: any;
+  @ViewChild("phoneNumber", { static: false }) phoneNumber: any;
+  @ViewChild("email", { static: false }) email: any;
+  @ViewChild("prinberkAccounts", { static: false }) prinberkAccounts: any;
+  @ViewChild("studentEmailGCH", { static: false }) studentEmailGCH: any;
+  @ViewChild("classId", { static: false }) classId: any;
+  @ViewChild("point", { static: false }) point: any;
+  @ViewChild("notes", { static: false }) notes: any;
 
   classObject: any;
   students: any;
   rmStudentID = 0;
-  rmStudentName = '';
-  title = 'Tina';
+  rmStudentName = "";
+  title = "Tina";
   end = 0;
   luck = 0;
   studentSelected: any = {
     id: 22,
-    fullName: '',
-    englishName: '',
-    dob: '',
-    phoneNumber: '',
-    email: '',
-    prinberkAccounts: '',
-    studentEmailGCH: '',
+    fullName: "",
+    englishName: "",
+    dob: "",
+    phoneNumber: "",
+    email: "",
+    prinberkAccounts: "",
+    studentEmailGCH: "",
     classId: 1,
     point: 0,
     winStreak: 0,
     streakNumber: 0,
-    notes: '',
+    notes: "",
   };
   classes: any = [
     {
       id: 1,
-      name: 'Class 4A',
-      year: '2021',
+      name: "Class 4A",
+      year: "2021",
     },
     {
       id: 2,
-      name: 'Class 3B',
-      year: '2021',
-      numbers: '32',
+      name: "Class 3B",
+      year: "2021",
+      numbers: "32",
     },
     {
       id: 3,
-      name: 'Class 3C',
-      year: '2021',
+      name: "Class 3C",
+      year: "2021",
     },
   ];
 
   constructor(private api: ApiService, public router: Router, public route: ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.resetPage();
+  }
+
+  resetPage() {
     this.route.params.subscribe((params) => {
-      this.getClass(params['classId']);
-      this.getStudents(params['classId']);
+      this.getClass(params["classId"]);
+      this.getStudents(params["classId"]);
       this.getClasses();
     });
   }
@@ -120,69 +124,64 @@ export class RankComponent implements OnInit {
 
   plusPoint(point: any) {
     if (point != 0) {
-      if (confirm('Are you sure to plus +' + point + ' point and next')) {
-        this.api.getStudentByID(this.rmStudentID).subscribe((response) => {
-          var student: any = response;
-          if (point == 1) {
-            //tra loi sai
-            if (student.winStreak == 1) {
-              student.streakNumber -= 1;
-              student.point += 2;
-            } else if (student.winStreak == 2) {
-              student.streakNumber = 0;
-              student.winStreak = 0;
+      this.api.getStudentByID(this.rmStudentID).subscribe((response) => {
+        var student: any = response;
+        if (point == 1) {
+          //tra loi sai
+          if (student.winStreak == 1) {
+            student.streakNumber -= 1;
+            student.point += 2;
+          } else if (student.winStreak == 2) {
+            student.streakNumber = 0;
+            student.winStreak = 0;
+            student.point += 1;
+          } else if (student.winStreak == 0) {
+            student.streakNumber -= 1;
+            student.point += 1;
+            if (student.streakNumber < -1) {
+              student.winStreak = 1;
               student.point += 1;
-            } else if (student.winStreak == 0) {
-              student.streakNumber -= 1;
-              student.point += 1;
-              if (student.streakNumber < -2) {
-                student.winStreak = 1;
-                student.point += 1;
-              }
-            }
-          } else if (point == 2) {
-            //tra loi dung
-            if (student.winStreak == 2) {
-              student.streakNumber += 1;
-              student.point += 3;
-            } else if (student.winStreak == 1) {
-              student.streakNumber = 0;
-              student.winStreak = 0;
-              student.point += 2;
-            } else if (student.winStreak == 0) {
-              student.streakNumber += 1;
-              student.point += 2;
-              if (student.streakNumber > 2) {
-                student.winStreak = 2;
-                student.point += 1;
-              }
             }
           }
+        } else if (point == 2) {
+          //tra loi dung
+          if (student.winStreak == 2) {
+            student.streakNumber += 1;
+            student.point += 3;
+          } else if (student.winStreak == 1) {
+            student.streakNumber = 0;
+            student.winStreak = 0;
+            student.point += 2;
+          } else if (student.winStreak == 0) {
+            student.streakNumber += 1;
+            student.point += 2;
+            if (student.streakNumber > 1) {
+              student.winStreak = 2;
+              student.point += 1;
+            }
+          }
+        }
 
-          this.api.updateStudentPoint(student);
-          this.getStudents(this.classObject.id);
-        });
-      }
+        this.api.updateStudentPoint(student);
+        this.randomStudent();
+        this.resetPage();
+      });
     } else {
       this.randomStudent();
-      this.getStudents(this.classObject.id);
+      this.resetPage();
     }
   }
 
   plusOne(student: any) {
-    if (confirm('Are you sure to plus +1 point for ' + student.englishName)) {
-      student.point += 1;
-      this.api.updateStudentPoint(student);
-      this.getStudents(this.classObject.id);
-    }
+    student.point += 1;
+    this.api.updateStudentPoint(student);
+    this.resetPage();
   }
 
   minusOne(student: any) {
-    if (confirm('Are you sure to minus -1 point for ' + student.englishName)) {
-      student.point -= 1;
-      this.api.updateStudentPoint(student);
-      this.getStudents(this.classObject.id);
-    }
+    student.point -= 1;
+    this.api.updateStudentPoint(student);
+    this.resetPage();
   }
 
   randomStudent() {
@@ -198,9 +197,9 @@ export class RankComponent implements OnInit {
   getIndex(index: any): string {
     let newIndex = Number(index) + 1;
     if (newIndex < 10) {
-      return '0' + newIndex;
+      return "0" + newIndex;
     } else {
-      return newIndex + '';
+      return newIndex + "";
     }
   }
 
@@ -221,7 +220,7 @@ export class RankComponent implements OnInit {
       this.studentSelected.point != this.point.nativeElement.value ||
       this.studentSelected.notes != this.notes.nativeElement.value
     ) {
-      if (confirm('Do you want to save your changes?')) {
+      if (confirm("Do you want to save your changes?")) {
         this.api.updateStudentFull({
           id: this.studentSelected.id,
           fullName: this.fullName.nativeElement.value,
@@ -237,6 +236,7 @@ export class RankComponent implements OnInit {
         });
         this.getStudents(this.classObject.id);
       }
+      this.resetPage();
     }
   }
 

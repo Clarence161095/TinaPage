@@ -33,8 +33,8 @@
       "studentEmailGCH": "dantran1738@gmail.com",
       "classId": 1,
       "point": 0,
-      "winStreak": 0,
-      "streakNumber": 0,
+      "winStreak": 2,
+      "streakNumber": 4,
       "notes": "Enroll in 22/03/2021",
       "prinberkAccounts": "undefined"
     },
@@ -64,8 +64,8 @@
       "studentEmailGCH": "              khanhnn1157@gmail.com  ",
       "classId": 1,
       "point": 0,
-      "winStreak": 0,
-      "streakNumber": 0,
+      "winStreak": 1,
+      "streakNumber": -4,
       "notes": ""
     },
     {
@@ -79,8 +79,8 @@
       "studentEmailGCH": "dannyhuynhquoc1204@gmail.com",
       "classId": 1,
       "point": 0,
-      "winStreak": 0,
-      "streakNumber": 0,
+      "winStreak": 2,
+      "streakNumber": 6,
       "notes": ""
     },
     {
@@ -94,8 +94,8 @@
       "studentEmailGCH": "huongntt0701@gmail.com",
       "classId": 1,
       "point": 0,
-      "winStreak": 0,
-      "streakNumber": 0,
+      "winStreak": 2,
+      "streakNumber": 3,
       "notes": ""
     },
     {
@@ -110,7 +110,7 @@
       "classId": 1,
       "point": 0,
       "winStreak": 0,
-      "streakNumber": 1,
+      "streakNumber": 0,
       "notes": "Enroll in 10/8/2020"
     },
     {
@@ -125,7 +125,7 @@
       "classId": 1,
       "point": 0,
       "winStreak": 0,
-      "streakNumber": 1,
+      "streakNumber": 0,
       "notes": ""
     },
     {
@@ -139,7 +139,7 @@
       "classId": 1,
       "point": 0,
       "winStreak": 0,
-      "streakNumber": 1,
+      "streakNumber": 0,
       "notes": "",
       "prinberkAccounts": "undefined"
     },
@@ -154,8 +154,8 @@
       "studentEmailGCH": "hai.hoanghainam@gmail.com\r\nnicknguyen0911@gmail.com",
       "classId": 1,
       "point": 0,
-      "winStreak": 0,
-      "streakNumber": 0,
+      "winStreak": 1,
+      "streakNumber": -4,
       "notes": ""
     },
     {
@@ -169,8 +169,8 @@
       "studentEmailGCH": "Maggsm2@gmail.com",
       "classId": 1,
       "point": 0,
-      "winStreak": 2,
-      "streakNumber": 4,
+      "winStreak": 0,
+      "streakNumber": -1,
       "notes": "Enroll in 22/06/2020"
     },
     {
@@ -185,7 +185,7 @@
       "classId": 1,
       "point": 0,
       "winStreak": 0,
-      "streakNumber": 0,
+      "streakNumber": -1,
       "notes": "Enroll in 04/05/2020"
     },
     {
@@ -200,7 +200,7 @@
       "classId": 1,
       "point": 0,
       "winStreak": 0,
-      "streakNumber": 0,
+      "streakNumber": -1,
       "notes": ""
     },
     {
@@ -231,7 +231,7 @@
       "classId": 1,
       "point": 0,
       "winStreak": 0,
-      "streakNumber": 0,
+      "streakNumber": 1,
       "notes": "Enroll in 04/09/2019"
     },
     {
@@ -245,7 +245,7 @@
       "classId": 1,
       "point": 0,
       "winStreak": 0,
-      "streakNumber": 0,
+      "streakNumber": -2,
       "notes": ""
     },
     {
@@ -259,8 +259,8 @@
       "studentEmailGCH": "Vivianluu1202@gmail.com",
       "classId": 1,
       "point": 0,
-      "winStreak": 0,
-      "streakNumber": 0,
+      "winStreak": 2,
+      "streakNumber": 4,
       "notes": ""
     },
     {
@@ -275,7 +275,7 @@
       "classId": 1,
       "point": 0,
       "winStreak": 0,
-      "streakNumber": -1,
+      "streakNumber": 1,
       "notes": "Enroll in 13/08/19"
     },
     {
@@ -289,8 +289,8 @@
       "studentEmailGCH": "ms.luonganhtoan@gmail.com",
       "classId": 1,
       "point": 0,
-      "winStreak": 0,
-      "streakNumber": 0,
+      "winStreak": 1,
+      "streakNumber": -8,
       "notes": "Enroll in 15/10/19"
     },
     {
@@ -305,7 +305,7 @@
       "classId": 1,
       "point": 0,
       "winStreak": 0,
-      "streakNumber": 0,
+      "streakNumber": -1,
       "notes": "Enroll in 23/09/20 "
     },
     {
@@ -319,8 +319,8 @@
       "studentEmailGCH": "khoiminh.alexander@gmail.com",
       "classId": 1,
       "point": 0,
-      "winStreak": 0,
-      "streakNumber": 0,
+      "winStreak": 2,
+      "streakNumber": 3,
       "notes": ""
     },
     {
@@ -334,8 +334,8 @@
       "studentEmailGCH": "duyenluu0309@gmail.com",
       "classId": 1,
       "point": 0,
-      "winStreak": 0,
-      "streakNumber": 0,
+      "winStreak": 1,
+      "streakNumber": -3,
       "notes": ""
     },
     {
@@ -349,8 +349,8 @@
       "studentEmailGCH": "nguyenhoanglam08052011@gmail.com",
       "classId": 1,
       "point": 0,
-      "winStreak": 2,
-      "streakNumber": 3,
+      "winStreak": 0,
+      "streakNumber": 0,
       "notes": ""
     },
     {
@@ -829,9 +829,24 @@
       "classId": 999,
       "point": 0,
       "winStreak": 0,
-      "streakNumber": 0,
+      "streakNumber": 1,
       "notes": "",
       "id": 55
+    },
+    {
+      "fullName": "C",
+      "englishName": "C",
+      "dob": "2011-01-01",
+      "phoneNumber": "",
+      "email": "",
+      "prinberkAccounts": "",
+      "studentEmailGCH": "",
+      "classId": 999,
+      "point": 0,
+      "winStreak": 0,
+      "streakNumber": 0,
+      "notes": "",
+      "id": 56
     }
   ],
   "effort": [
